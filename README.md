@@ -1,14 +1,11 @@
 # prod_project
 
-1)sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
 
+1)sudo yum install -y https://repo.ius.io/ius-release-el7.rpm
 
-if the above gives error do this 
-sudo yum install -y https://repo.ius.io/ius-release-el7.rpm
+  sudo yum update
 
-sudo yum update
-
-sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
+  sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
 
 
 
@@ -16,7 +13,7 @@ sudo yum install -y python36u python36u-libs python36u-devel python36u-pip
 
 3)python3 -m venv env_prod
 
-$)wget http://www6.atomicorp.com/channels/atomic/centos/7/x86_64/RPMS/atomic-sqlite-sqlite-3.8.5-3.el7.art.x86_64.rpm
+4)wget http://www6.atomicorp.com/channels/atomic/centos/7/x86_64/RPMS/atomic-sqlite-sqlite-3.8.5-3.el7.art.x86_64.rpm
 
 5)sudo yum localinstall atomic-sqlite-sqlite-3.8.5-3.el7.art.x86_64.rpm
 
@@ -29,6 +26,8 @@ $)wget http://www6.atomicorp.com/channels/atomic/centos/7/x86_64/RPMS/atomic-sql
 9)pip install "django>=3.0,<4"
 
 10)pip install django-rest-framework
+
+=================================================================
 
 11)git clone https://github.com/muskannechlani/prod_project/
 
