@@ -3,6 +3,8 @@ from django.shortcuts import render
 # Create your views here.
 from rest_framework.response import Response
 from django.http import HttpResponse, JsonResponse
+from .models import *
+from .serializers import *
 import subprocess
 def index(request):
      return render(request,'index.html')
@@ -13,7 +15,9 @@ def cpu(request):
     stdout=subprocess.PIPE, 
     stderr=subprocess.PIPE )
     cpu_util = process.stdout.read()
-  
+    cpu_obj = Cpu.objects.create(percent_util_cpu = float(cpu_util))
+    # print type(process.stdout.read())
+    cpu_obj.save()
     return HttpResponse(cpu_util)
 
    
@@ -25,6 +29,9 @@ def mem(request):
     stdout=subprocess.PIPE, 
     stderr=subprocess.PIPE )
     mem_util = process.stdout.read()
+    cpu_obj = Mem.objects.create(percent_util_mem = float(mem_util))
+    # print type(process.stdout.read())
+    cpu_obj.save()
     return HttpResponse(mem_util)
 
   
@@ -71,3 +78,17 @@ def maxmem(request):
         json_str['name'] = stri[3]
         arr_mem.append(json_str)
     return JsonResponse(arr_mem,safe=False)
+
+
+def GetCpuView(request):
+    lists = Cpu.objects.all()
+ 
+    serializer = CpuSerializer(lists,many=True)
+    return JsonResponse(serializer.data,safe=False)
+
+
+def GetMemView(request):
+    lists = Mem.objects.all()
+   
+    serializer = MemSerializer(lists,many=True)
+    return JsonResponse(serializer.data,safe=False)

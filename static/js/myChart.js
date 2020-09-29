@@ -189,6 +189,11 @@ var ctx = document.getElementById("dbtrend").getContext('2d');
  };
 
 initDate();
+    updateCpu();
+    updateMem();
+    updateDB();
+    doRunmaxcpu();
+    doRunmaxmem();
 setInterval(function() {
     updateCpu();
     updateMem();

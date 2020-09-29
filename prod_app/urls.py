@@ -7,6 +7,8 @@ urlpatterns = [
     path('mem/', mem, name='home3'),
     path('db/', db, name='home4'),
     path('maxmem/', maxmem, name='home5'),
+    path('cpuview/', GetCpuView, name='home6'),
+    path('memview/', GetMemView, name='home7'),
     path('', index)
 
   
